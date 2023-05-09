@@ -16,6 +16,7 @@ import threading
 
 from ymodem import YMODEM
 import os
+# bob bob
 
    
 class MFrame(MainFrame):
