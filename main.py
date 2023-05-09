@@ -230,7 +230,7 @@ class MFrame(MainFrame):
                 self.fault_heartbeat_count = 0
             except Exception as err:
                 self.fault_heartbeat_count += 1
-                if self.fault_heartbeat_count > 5:
+                if self.fault_heartbeat_count > 3:
                     self.show_status(u'心跳进程异常:{}'.format(err))
                     self.disconnect_com()
             finally:
@@ -376,7 +376,7 @@ class MFrame(MainFrame):
                 self.m_grid2.SetCellValue([8, 3], str(value_tuple[2] / 100.0))
                 self.m_grid2.SetCellValue([9, 3], str(value_tuple[5] / 10.0))
                 self.m_grid2.SetCellValue([10, 3], str(value_tuple[6] / 100.0))
-                self.m_grid2.SetCellValue([11, 3], str(value_tuple[7] / 100.0))   
+                self.m_grid2.SetCellValue([11, 3], str(value_tuple[7] / 100.0)) 
 
                 thresholds_tuple = self.master.execute(self.slave_addr, cst.READ_HOLDING_REGISTERS, 300, 60)
                 columns = [1, 2, 4, 5]
@@ -397,6 +397,11 @@ class MFrame(MainFrame):
                     self.m_grid2.SetCellValue([11, col], str(thresholds_tuple[7 * 4 + i] / 100.0))
                     n += 1
 
+                for row in range(12):
+                    if self.m_grid2.GetCellValue([row, 5]) == "655.35" or self.m_grid2.GetCellValue([row, 5]) == "6553.5":
+                        for col in range(1, 6):
+                            self.m_grid2.SetCellValue([row, col], "--")
+                
                 if not(self.check_parameters_thread.is_alive()):
                     self.check_parameters_thread = threading.Thread(target=self.check_parameters)
                     self.check_parameters_thread.start()
