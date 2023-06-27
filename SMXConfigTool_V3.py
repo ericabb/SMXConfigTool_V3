@@ -21,7 +21,7 @@ _ = gettext.gettext
 class MainFrame ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"SMX202 机械特性监测模块配置工具 V3"), pos = wx.DefaultPosition, size = wx.Size( 503,841 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"SMX202 机械特性监测模块配置工具 V3"), pos = wx.DefaultPosition, size = wx.Size( 503,681 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
         self.SetFont( wx.Font( 9, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "微软雅黑" ) )
@@ -29,43 +29,22 @@ class MainFrame ( wx.Frame ):
 
         bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
-        bSizer17 = wx.BoxSizer( wx.VERTICAL )
-
-        self.m_bitmap1 = wx.StaticBitmap( self, wx.ID_ANY, wx.Bitmap( u"header.png", wx.BITMAP_TYPE_ANY ), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer17.Add( self.m_bitmap1, 0, wx.TOP|wx.BOTTOM|wx.RIGHT, 5 )
-
-
-        bSizer1.Add( bSizer17, 0, 0, 5 )
-
         bSizer4 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.m_toolBar1 = wx.ToolBar( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TB_HORIZONTAL )
-        self.m_toolBar1.SetToolBitmapSize( wx.Size( 10,10 ) )
-        self.m_toolBar1.SetBackgroundColour( wx.Colour( 255, 255, 255 ) )
+        self.m_button1 = wx.Button( self, wx.ID_ANY, _(u"连接"), wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+        bSizer4.Add( self.m_button1, 0, wx.ALL, 5 )
 
-        self.m_tool4 = self.m_toolBar1.AddTool( wx.ID_ANY, _(u"tool"), wx.Bitmap( u"res/link.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, _(u"连接设备"), wx.EmptyString, None )
+        self.m_button2 = wx.Button( self, wx.ID_ANY, _(u"断开"), wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+        bSizer4.Add( self.m_button2, 0, wx.ALL, 5 )
 
-        self.m_tool9 = self.m_toolBar1.AddTool( wx.ID_ANY, _(u"tool"), wx.Bitmap( u"res/unlink.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, _(u"断开设备"), wx.EmptyString, None )
+        self.m_button3 = wx.Button( self, wx.ID_ANY, _(u"读取"), wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+        bSizer4.Add( self.m_button3, 0, wx.ALL, 5 )
 
-        self.m_toolBar1.AddSeparator()
+        self.m_button4 = wx.Button( self, wx.ID_ANY, _(u"下载"), wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+        bSizer4.Add( self.m_button4, 0, wx.ALL, 5 )
 
-        self.m_tool5 = self.m_toolBar1.AddTool( wx.ID_ANY, _(u"tool"), wx.Bitmap( u"res/upload.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, _(u"读取参数"), _(u"从SMX202读取设备参数"), None )
-
-        self.m_tool3 = self.m_toolBar1.AddTool( wx.ID_ANY, _(u"tool"), wx.Bitmap( u"res/download.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, _(u"配置参数"), wx.EmptyString, None )
-
-        self.m_toolBar1.AddSeparator()
-
-        self.m_tool6 = self.m_toolBar1.AddTool( wx.ID_ANY, _(u"tool"), wx.Bitmap( u"res/target-two.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, _(u"标定阈值"), wx.EmptyString, None )
-
-        self.m_tool7 = self.m_toolBar1.AddTool( wx.ID_ANY, _(u"tool"), wx.Bitmap( u"res/curve-adjustment.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, _(u"读取波形"), wx.EmptyString, None )
-
-        self.m_toolBar1.AddSeparator()
-
-        self.m_tool8 = self.m_toolBar1.AddTool( wx.ID_ANY, _(u"tool"), wx.Bitmap( u"res/upload-laptop.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, _(u"升级固件"), wx.EmptyString, None )
-
-        self.m_toolBar1.Realize()
-
-        bSizer4.Add( self.m_toolBar1, 0, wx.EXPAND, 5 )
+        self.m_button5 = wx.Button( self, wx.ID_ANY, _(u"升级固件"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer4.Add( self.m_button5, 0, wx.ALL, 5 )
 
 
         bSizer1.Add( bSizer4, 0, 0, 5 )
@@ -108,7 +87,7 @@ class MainFrame ( wx.Frame ):
 
         bSizerUnitNum.Add( self.m_staticTextUnitNum, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
 
-        m_choiceUnitNumChoices = [ wx.EmptyString, _(u"单元1(97)"), _(u"单元2(98)"), _(u"单元3(99)"), _(u"单元4(100)"), _(u"单元5(101)"), _(u"单元6(102)"), _(u"单元7(103)"), _(u"单元8(104)"), _(u"单元9(105)"), _(u"单元10(106)"), _(u"单元11(107)"), _(u"单元12(108)") ]
+        m_choiceUnitNumChoices = [ wx.EmptyString, _(u"单元1(97)"), _(u"单元2(98)"), _(u"单元3(99)"), _(u"单元4(100)"), _(u"单元5(101)"), _(u"单元6(102)"), _(u"单元7(103)"), _(u"单元8(104)"), _(u"单元9(105)"), _(u"单元10(106)"), _(u"单元11(107)"), _(u"单元12(108)"), _(u"单元13(109)"), _(u"单元14(110)"), _(u"单元15(111)"), _(u"单元16(112)"), _(u"单元17(113)"), _(u"单元18(114)"), _(u"单元19(115)"), _(u"单元20(116)") ]
         self.m_choiceUnitNum = wx.Choice( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.DefaultPosition, wx.Size( 120,-1 ), m_choiceUnitNumChoices, 0 )
         self.m_choiceUnitNum.SetSelection( 0 )
         self.m_choiceUnitNum.SetToolTip( _(u"选择/设置监测模块安装单元") )
@@ -199,23 +178,6 @@ class MainFrame ( wx.Frame ):
 
 
         bSizer1.Add( sbSizer2, 0, wx.EXPAND, 5 )
-
-        sbSizer61 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, _(u"固件升级") ), wx.VERTICAL )
-
-        self.m_filePicker1 = wx.FilePickerCtrl( sbSizer61.GetStaticBox(), wx.ID_ANY, wx.EmptyString, _(u"Select a file"), _(u"*.*"), wx.DefaultPosition, wx.DefaultSize, wx.FLP_DEFAULT_STYLE )
-        self.m_filePicker1.SetMinSize( wx.Size( 450,-1 ) )
-
-        sbSizer61.Add( self.m_filePicker1, 0, wx.ALL, 5 )
-
-        self.m_gauge1 = wx.Gauge( sbSizer61.GetStaticBox(), wx.ID_ANY, 100, wx.DefaultPosition, wx.DefaultSize, wx.GA_HORIZONTAL )
-        self.m_gauge1.SetValue( 0 )
-        self.m_gauge1.Hide()
-        self.m_gauge1.SetMinSize( wx.Size( 400,-1 ) )
-
-        sbSizer61.Add( self.m_gauge1, 0, wx.ALL|wx.RESERVE_SPACE_EVEN_IF_HIDDEN, 5 )
-
-
-        bSizer1.Add( sbSizer61, 0, wx.EXPAND, 5 )
 
         bSizer37 = wx.BoxSizer( wx.HORIZONTAL )
 
@@ -312,7 +274,7 @@ class MainFrame ( wx.Frame ):
         # Rows
         self.m_grid2.SetRowSize( 0, 16 )
         self.m_grid2.SetRowSize( 1, 16 )
-        self.m_grid2.SetRowSize( 2, 16 )
+        self.m_grid2.SetRowSize( 2, 17 )
         self.m_grid2.SetRowSize( 3, 16 )
         self.m_grid2.SetRowSize( 4, 16 )
         self.m_grid2.SetRowSize( 5, 16 )
@@ -347,52 +309,41 @@ class MainFrame ( wx.Frame ):
         self.m_grid2.SetFont( wx.Font( 9, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL, False, "宋体" ) )
         self.m_grid2.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 
-        sbSizer6.Add( self.m_grid2, 0, wx.EXPAND, 5 )
+        sbSizer6.Add( self.m_grid2, 0, 0, 5 )
 
 
-        bSizer1.Add( sbSizer6, 1, 0, 5 )
+        bSizer1.Add( sbSizer6, 0, 0, 5 )
 
-        bSizer152 = wx.BoxSizer( wx.VERTICAL )
+        sbSizer61 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, _(u"固件升级") ), wx.VERTICAL )
 
-        self.m_bitmap2 = wx.StaticBitmap( self, wx.ID_ANY, wx.Bitmap( u"footer.png", wx.BITMAP_TYPE_ANY ), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer152.Add( self.m_bitmap2, 0, wx.ALL, 5 )
+        self.m_filePicker1 = wx.FilePickerCtrl( sbSizer61.GetStaticBox(), wx.ID_ANY, wx.EmptyString, _(u"Select a file"), _(u"*.*"), wx.DefaultPosition, wx.DefaultSize, wx.FLP_DEFAULT_STYLE )
+        self.m_filePicker1.SetMinSize( wx.Size( 450,-1 ) )
+
+        sbSizer61.Add( self.m_filePicker1, 0, wx.ALL, 5 )
+
+        self.m_gauge1 = wx.Gauge( sbSizer61.GetStaticBox(), wx.ID_ANY, 100, wx.DefaultPosition, wx.DefaultSize, wx.GA_HORIZONTAL )
+        self.m_gauge1.SetValue( 0 )
+        self.m_gauge1.Hide()
+        self.m_gauge1.SetMinSize( wx.Size( 400,-1 ) )
+
+        sbSizer61.Add( self.m_gauge1, 0, wx.ALL|wx.RESERVE_SPACE_EVEN_IF_HIDDEN, 5 )
 
 
-        bSizer1.Add( bSizer152, 0, wx.EXPAND, 5 )
+        bSizer1.Add( sbSizer61, 0, wx.EXPAND, 5 )
 
 
         self.SetSizer( bSizer1 )
         self.Layout()
         self.m_statusBar1 = self.CreateStatusBar( 4, wx.STB_DEFAULT_STYLE, wx.ID_ANY )
-        self.m_menubar1 = wx.MenuBar( 0 )
-        self.m_menubar1.Hide()
-
-        self.m_menu1 = wx.Menu()
-        self.m_menuItem1 = wx.MenuItem( self.m_menu1, wx.ID_ANY, _(u"打开"), wx.EmptyString, wx.ITEM_NORMAL )
-        self.m_menu1.Append( self.m_menuItem1 )
-
-        self.m_menuItem2 = wx.MenuItem( self.m_menu1, wx.ID_ANY, _(u"退出"), wx.EmptyString, wx.ITEM_NORMAL )
-        self.m_menu1.Append( self.m_menuItem2 )
-
-        self.m_menubar1.Append( self.m_menu1, _(u"文件") )
-
-        self.m_menu2 = wx.Menu()
-        self.m_menubar1.Append( self.m_menu2, _(u"配置") )
-
-        self.m_menu3 = wx.Menu()
-        self.m_menubar1.Append( self.m_menu3, _(u"关于") )
-
-        self.SetMenuBar( self.m_menubar1 )
-
 
         self.Centre( wx.BOTH )
 
         # Connect Events
-        self.Bind( wx.EVT_TOOL, self.on_connect_click, id = self.m_tool4.GetId() )
-        self.Bind( wx.EVT_TOOL, self.on_disconnect_click, id = self.m_tool9.GetId() )
-        self.Bind( wx.EVT_TOOL, self.read_configuration, id = self.m_tool5.GetId() )
-        self.Bind( wx.EVT_TOOL, self.write_configuration, id = self.m_tool3.GetId() )
-        self.Bind( wx.EVT_TOOL, self.on_open_fwupdate, id = self.m_tool8.GetId() )
+        self.m_button1.Bind( wx.EVT_BUTTON, self.on_connect_click )
+        self.m_button2.Bind( wx.EVT_BUTTON, self.on_disconnect_click )
+        self.m_button3.Bind( wx.EVT_BUTTON, self.read_configuration )
+        self.m_button4.Bind( wx.EVT_BUTTON, self.write_configuration )
+        self.m_button5.Bind( wx.EVT_BUTTON, self.on_open_fwupdate )
         self.m_checkBox1.Bind( wx.EVT_CHECKBOX, self.on_check_highspeed )
 
     def __del__( self ):

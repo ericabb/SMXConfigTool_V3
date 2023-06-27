@@ -16,11 +16,17 @@ import threading
 
 from ymodem import YMODEM
 import os
-# bob bob
 
+# import base64
+# from SMXToolPic import *
    
 class MFrame(MainFrame):
     def __init__(self, parent):
+        # self.get_pic(uploadlaptop_png,"uploadlaptop.png")
+        # self.get_pic(link_png,"link.png")
+        # self.get_pic(unlink_png,"unlink.png")
+        # self.get_pic(upload_png,"upload.png")
+        # self.get_pic(download_png,"download.png")
         MainFrame.__init__(self, parent)
         self.__set_properties()
     
@@ -61,6 +67,12 @@ class MFrame(MainFrame):
 
         self.heartbeat_thread = threading.Thread(target=self.on_heartbeat)
         self.check_parameters_thread = threading.Thread(target=self.check_parameters)
+   
+    # def get_pic(self, pic_code, pic_name):
+    #     image = open(pic_name, 'wb')
+    #     image.write(base64.b64decode(pic_code))
+    #     image.close()
+    #     pass
 
     def show_message(self, msg=u'消息'):
         """
@@ -126,7 +138,7 @@ class MFrame(MainFrame):
         * Disconnect SMX202 if it is connected
         """
         # possible slave addresses
-        self.slaves = [999, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]
+        self.slaves = [999, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116]
         # possible slave baudrate
         baudrates = [9600, 115200]
         
@@ -158,7 +170,7 @@ class MFrame(MainFrame):
                                 self.show_status(u"心跳进程启动正常")
                     else:
                         ## no unit is selected, then search
-                        for j in range(1, 13):                                
+                        for j in range(1, 21):                                
                             try:                                
                                 self.show_status(u"尝试连接从机{}波特率{}".format(self.slaves[j],baudrates[i]))
                                 self.master.execute(self.slaves[j], cst.READ_HOLDING_REGISTERS, 0, 1)

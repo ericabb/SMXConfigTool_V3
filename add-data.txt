@@ -1,0 +1,34 @@
+--add-data="./res/upload-laptop.png;./res"
+--add-data="./res/link.png;./res"
+--add-data="./res/unlink.png;./res"
+--add-data="./res/upload.png;./res"
+--add-data="./res/download.png;./res"
+
+--add-data="./res/upload-laptop.png;./res" --add - data="./res/link.png;./res" --add - data="./res/unlink.png;./res" --add - data="./res/upload.png;./res" --add - data="./res/download.png;./res"
+
+--add-data=".\res\upload-laptop.png;.\res" --add-data=".\res\link.png;.\res" --add-data=".\res\unlink.png;.\res" --add-data=".\res\upload.png;.\res" --add-data=".\res\download.png;.\res"
+
+--add-data="./uploadlaptop.png;." --add-data="./link.png;." --add-data="./unlink.png;." --add-data="./upload.png;." --add-data="./download.png;."
+
+uploadlaptop.png
+link.png
+unlink.png
+upload.png
+download.png
+
+self.get_pic(uploadlaptop_png,'uploadlaptop.png')
+self.get_pic(link_png,'link.png')
+self.get_pic(unlink_png,'unlink.png')
+self.get_pic(upload_png,'upload.png')
+self.get_pic(download_png,'download.png')
+
+os.remove('uploadlaptop.png')
+os.remove('link.png')
+os.remove('unlink.png')
+os.remove('upload.png')
+os.remove('download.png')
+
+def get_pic(pic_code, pic_name):
+    image = open(pic_name, 'wb')
+    image.write(base64.b64decode(pic_code))
+    image.close()
